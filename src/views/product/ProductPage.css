@@ -1,5 +1,6 @@
 /* Product Page Stylesheet
-   Demonstrates modern CSS techniques: Flexbox, CSS Grid, and responsive Media Queries
+   Crafted with pixel-perfect Flexbox, CSS Grid, and responsive Media Queries.
+   Ensures seamless alignment, zero overflow, and fluid scaling across all screens.
 */
 
 :root {
@@ -14,52 +15,64 @@
   --card-border: #e2edf0;
   --shadow-sm: 0 4px 12px rgba(23, 48, 57, 0.06);
   --shadow-md: 0 10px 30px rgba(23, 48, 57, 0.1);
-  --shadow-lg: 0 18px 45px rgba(0, 219, 227, 0.15);
   --radius-sm: 8px;
   --radius-md: 14px;
   --radius-lg: 20px;
 }
 
-/* Base Container */
+/* Base Container - Strict box-sizing & text alignment reset */
+.product-page-container,
+.product-page-container * {
+  box-sizing: border-box;
+}
+
 .product-page-container {
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
   color: var(--text-primary);
   background-color: var(--bg-light);
-  min-height: 100vh;
-  box-sizing: border-box;
+  width: 100%;
+  max-width: 100%;
+  overflow-x: hidden;
+  text-align: left; /* Overrides .App center alignment */
+  margin: 0;
+  padding: 0;
 }
 
 /* ========================================================
    1. HEADER SECTION (Clear product name & banner)
    ======================================================== */
 .product-header-section {
+  width: 100%;
   background: linear-gradient(135deg, #173039 0%, #1a424e 50%, #0c2027 100%);
   color: #ffffff;
-  padding: 48px 24px;
+  padding: 50px 24px 60px 24px;
   position: relative;
   overflow: hidden;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+  text-align: left;
 }
 
 .product-header-section::after {
   content: "";
   position: absolute;
-  top: -50%;
-  right: -10%;
-  width: 500px;
-  height: 500px;
-  background: radial-gradient(circle, rgba(0, 219, 227, 0.18) 0%, rgba(0, 0, 0, 0) 70%);
+  top: -40%;
+  right: -5%;
+  width: 480px;
+  height: 480px;
+  background: radial-gradient(circle, rgba(0, 219, 227, 0.16) 0%, rgba(0, 0, 0, 0) 70%);
   pointer-events: none;
 }
 
 .header-content-wrapper {
   max-width: 1200px;
+  width: 100%;
   margin: 0 auto;
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  gap: 14px;
   position: relative;
   z-index: 2;
+  text-align: left;
 }
 
 .product-badge-row {
@@ -87,11 +100,11 @@
 .product-status-badge {
   display: inline-flex;
   align-items: center;
-  gap: 6px;
+  gap: 8px;
   background: rgba(46, 204, 113, 0.15);
   border: 1px solid rgba(46, 204, 113, 0.4);
   color: #2ecc71;
-  padding: 6px 12px;
+  padding: 6px 14px;
   border-radius: 20px;
   font-size: 13px;
   font-weight: 600;
@@ -106,22 +119,22 @@
 }
 
 .product-main-title {
-  font-size: 42px;
+  font-size: 44px;
   font-weight: 800;
   line-height: 1.2;
   margin: 0;
   letter-spacing: -0.5px;
-  background: linear-gradient(90deg, #ffffff 60%, var(--primary-accent) 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+  color: #ffffff;
+  text-align: left;
 }
 
 .product-tagline {
   font-size: 18px;
   color: #b0c7cf;
   margin: 0;
-  max-width: 700px;
-  line-height: 1.5;
+  max-width: 720px;
+  line-height: 1.55;
+  text-align: left;
 }
 
 /* ========================================================
@@ -130,7 +143,8 @@
    ======================================================== */
 .product-hero-wrapper {
   max-width: 1200px;
-  margin: -30px auto 40px auto;
+  width: 100%;
+  margin: -36px auto 40px auto;
   padding: 0 24px;
   position: relative;
   z-index: 3;
@@ -138,21 +152,23 @@
 
 .product-hero-grid {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 36px;
+  grid-template-columns: 1.05fr 1fr;
+  gap: 40px;
   background: var(--card-bg);
   border-radius: var(--radius-lg);
   border: 1px solid var(--card-border);
   box-shadow: var(--shadow-md);
   padding: 40px;
-  box-sizing: border-box;
+  width: 100%;
+  text-align: left;
 }
 
-/* Product Image Gallery / Showcase */
+/* Product Media Column */
 .product-media-column {
   display: flex;
   flex-direction: column;
   gap: 16px;
+  width: 100%;
 }
 
 .product-image-container {
@@ -176,14 +192,14 @@
 }
 
 .product-image-container:hover .product-main-img {
-  transform: scale(1.04);
+  transform: scale(1.03);
 }
 
 .image-tag-overlay {
   position: absolute;
   top: 16px;
   left: 16px;
-  background: rgba(23, 48, 57, 0.85);
+  background: rgba(23, 48, 57, 0.88);
   backdrop-filter: blur(8px);
   color: #ffffff;
   padding: 6px 14px;
@@ -198,6 +214,7 @@
 .thumbnail-row {
   display: flex;
   gap: 12px;
+  width: 100%;
 }
 
 .thumbnail-btn {
@@ -224,19 +241,21 @@
 }
 
 /* ========================================================
-   3. PRODUCT DESCRIPTION COLUMN
+   3. PRODUCT DETAILS COLUMN
    ======================================================== */
 .product-details-column {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  gap: 24px;
+  gap: 22px;
+  text-align: left;
 }
 
 .details-header {
   display: flex;
   flex-direction: column;
   gap: 8px;
+  text-align: left;
 }
 
 .rating-row {
@@ -258,11 +277,12 @@
 }
 
 .product-display-name {
-  font-size: 32px;
+  font-size: 30px;
   font-weight: 800;
   color: var(--primary-dark);
   margin: 0;
   line-height: 1.25;
+  text-align: left;
 }
 
 .price-row {
@@ -273,7 +293,7 @@
 }
 
 .current-price {
-  font-size: 36px;
+  font-size: 34px;
   font-weight: 800;
   color: var(--primary-dark);
 }
@@ -298,15 +318,17 @@
   padding: 16px 0;
   border-top: 1px solid #ebf2f5;
   border-bottom: 1px solid #ebf2f5;
+  text-align: left;
 }
 
 .description-title {
-  font-size: 15px;
+  font-size: 14px;
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 1px;
   color: var(--secondary-accent);
   margin-bottom: 8px;
+  text-align: left;
 }
 
 .product-description-text {
@@ -314,6 +336,7 @@
   line-height: 1.65;
   color: var(--text-muted);
   margin: 0;
+  text-align: left;
 }
 
 /* Quick Spec Highlights */
@@ -321,6 +344,7 @@
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 12px;
+  width: 100%;
 }
 
 .spec-item {
@@ -334,11 +358,13 @@
   font-size: 13px;
   font-weight: 600;
   color: var(--primary-dark);
+  text-align: left;
 }
 
 .spec-icon {
   font-size: 18px;
   color: var(--secondary-accent);
+  flex-shrink: 0;
 }
 
 /* CTA Buttons */
@@ -346,16 +372,17 @@
   display: flex;
   gap: 16px;
   margin-top: auto;
+  width: 100%;
 }
 
 .btn-primary-action {
-  flex: 2;
+  flex: 1.6;
   background: var(--primary-accent);
   color: var(--primary-dark);
   border: none;
   border-radius: var(--radius-sm);
-  padding: 16px 24px;
-  font-size: 16px;
+  padding: 15px 22px;
+  font-size: 15px;
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.5px;
@@ -366,6 +393,7 @@
   align-items: center;
   justify-content: center;
   gap: 10px;
+  text-align: center;
 }
 
 .btn-primary-action:hover {
@@ -380,14 +408,15 @@
   color: var(--primary-dark);
   border: 2px solid var(--primary-dark);
   border-radius: var(--radius-sm);
-  padding: 16px 20px;
-  font-size: 15px;
+  padding: 15px 18px;
+  font-size: 14px;
   font-weight: 700;
   cursor: pointer;
   transition: all 0.2s ease;
   display: flex;
   align-items: center;
   justify-content: center;
+  text-align: center;
 }
 
 .btn-secondary-action:hover {
@@ -397,12 +426,14 @@
 
 /* ========================================================
    4. KEY FEATURES SECTION (At least 3 features)
-   Technique: CSS Grid (Responsive multi-column)
+   Technique: CSS Grid with fluid responsive layout
    ======================================================== */
 .features-section {
   max-width: 1200px;
+  width: 100%;
   margin: 50px auto 60px auto;
   padding: 0 24px;
+  text-align: left;
 }
 
 .section-headline-wrapper {
@@ -430,14 +461,17 @@
 .section-subheading {
   font-size: 16px;
   color: var(--text-muted);
-  max-width: 600px;
+  max-width: 620px;
   margin: 10px auto 0 auto;
+  line-height: 1.5;
 }
 
+/* Adaptive Features Grid: 4 cols on large, 2 cols on medium, 1 on small */
 .features-grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 24px;
+  width: 100%;
 }
 
 .feature-card {
@@ -448,10 +482,13 @@
   box-shadow: var(--shadow-sm);
   display: flex;
   flex-direction: column;
-  gap: 16px;
+  align-items: flex-start; /* Clean left alignment */
+  text-align: left;
+  gap: 14px;
   transition: all 0.3s ease;
   position: relative;
   overflow: hidden;
+  word-break: break-word;
 }
 
 .feature-card::before {
@@ -466,7 +503,7 @@
 }
 
 .feature-card:hover {
-  transform: translateY(-6px);
+  transform: translateY(-5px);
   box-shadow: var(--shadow-md);
   border-color: #bee5ec;
 }
@@ -476,8 +513,8 @@
 }
 
 .feature-icon-wrapper {
-  width: 54px;
-  height: 54px;
+  width: 52px;
+  height: 52px;
   border-radius: 12px;
   background: linear-gradient(135deg, rgba(0, 219, 227, 0.15) 0%, rgba(35, 162, 187, 0.25) 100%);
   color: var(--secondary-accent);
@@ -485,6 +522,7 @@
   align-items: center;
   justify-content: center;
   font-size: 26px;
+  flex-shrink: 0;
 }
 
 .feature-title {
@@ -492,6 +530,8 @@
   font-weight: 700;
   color: var(--primary-dark);
   margin: 0;
+  line-height: 1.35;
+  text-align: left;
 }
 
 .feature-description {
@@ -499,36 +539,44 @@
   line-height: 1.6;
   color: var(--text-muted);
   margin: 0;
+  text-align: left;
 }
 
 /* ========================================================
    5. FOOTER SECTION (Clear Contact Information)
-   Technique: Flexbox & Grid
+   Technique: Flexbox & CSS Grid
    ======================================================== */
 .product-footer-section {
+  width: 100%;
   background: #11232a;
   color: #ffffff;
   padding: 56px 24px 32px 24px;
   border-top: 3px solid var(--primary-accent);
+  text-align: left;
 }
 
 .footer-inner-container {
   max-width: 1200px;
+  width: 100%;
   margin: 0 auto;
+  text-align: left;
 }
 
 .footer-columns-grid {
   display: grid;
-  grid-template-columns: 1.5fr 1fr 1.2fr;
+  grid-template-columns: 1.4fr 1fr 1.3fr;
   gap: 40px;
   padding-bottom: 40px;
   border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  width: 100%;
+  text-align: left;
 }
 
 .footer-brand-col {
   display: flex;
   flex-direction: column;
   gap: 14px;
+  text-align: left;
 }
 
 .footer-brand-title {
@@ -537,6 +585,7 @@
   color: var(--primary-accent);
   margin: 0;
   letter-spacing: -0.5px;
+  text-align: left;
 }
 
 .footer-brand-desc {
@@ -544,21 +593,24 @@
   color: #9cb1b9;
   line-height: 1.6;
   margin: 0;
+  text-align: left;
 }
 
 .footer-nav-col {
   display: flex;
   flex-direction: column;
   gap: 12px;
+  text-align: left;
 }
 
 .footer-heading {
-  font-size: 16px;
+  font-size: 15px;
   font-weight: 700;
   color: #ffffff;
   margin: 0 0 4px 0;
   text-transform: uppercase;
   letter-spacing: 1px;
+  text-align: left;
 }
 
 .footer-links-list {
@@ -568,6 +620,7 @@
   display: flex;
   flex-direction: column;
   gap: 10px;
+  text-align: left;
 }
 
 .footer-links-list a {
@@ -585,6 +638,7 @@
   display: flex;
   flex-direction: column;
   gap: 12px;
+  text-align: left;
 }
 
 .contact-info-list {
@@ -594,6 +648,7 @@
   display: flex;
   flex-direction: column;
   gap: 12px;
+  text-align: left;
 }
 
 .contact-info-item {
@@ -602,12 +657,13 @@
   gap: 12px;
   font-size: 14px;
   color: #9cb1b9;
+  text-align: left;
 }
 
 .contact-icon {
   color: var(--primary-accent);
   font-size: 18px;
-  margin-top: 2px;
+  margin-top: 1px;
   flex-shrink: 0;
 }
 
@@ -624,21 +680,33 @@
   color: #6a828d;
   flex-wrap: wrap;
   gap: 16px;
+  width: 100%;
 }
 
 /* ========================================================
-   6. RESPONSIVENESS (Media Queries)
-   Desktop -> Tablet -> Mobile
+   6. RESPONSIVE BREAKPOINTS (Fluid Alignment & Zero Overflow)
    ======================================================== */
 
-/* Tablet (max-width: 992px) */
-@media screen and (max-width: 992px) {
-  .product-main-title {
-    font-size: 34px;
+/* Laptop / Medium Desktops (max-width: 1140px) */
+@media screen and (max-width: 1140px) {
+  .features-grid {
+    grid-template-columns: repeat(2, 1fr); /* 2 columns gives plenty of space per card */
+    gap: 24px;
   }
 
   .product-hero-grid {
-    grid-template-columns: 1fr;
+    gap: 30px;
+  }
+}
+
+/* Tablets / Small Laptops (max-width: 960px) */
+@media screen and (max-width: 960px) {
+  .product-main-title {
+    font-size: 36px;
+  }
+
+  .product-hero-grid {
+    grid-template-columns: 1fr; /* Single column stack */
     gap: 32px;
     padding: 30px;
   }
@@ -662,10 +730,10 @@
   }
 }
 
-/* Mobile (max-width: 768px) */
-@media screen and (max-width: 768px) {
+/* Mobile Devices (max-width: 680px) */
+@media screen and (max-width: 680px) {
   .product-header-section {
-    padding: 32px 16px;
+    padding: 36px 18px 48px 18px;
   }
 
   .product-main-title {
@@ -677,7 +745,7 @@
   }
 
   .product-hero-wrapper {
-    margin-top: -15px;
+    margin-top: -24px;
     padding: 0 16px;
   }
 
@@ -686,7 +754,7 @@
   }
 
   .product-image-container {
-    height: 280px;
+    height: 270px;
   }
 
   .product-display-name {
@@ -711,7 +779,8 @@
   }
 
   .features-grid {
-    grid-template-columns: 1fr;
+    grid-template-columns: 1fr; /* Clean single column stack on mobile */
+    gap: 16px;
   }
 
   .section-main-heading {
@@ -730,11 +799,12 @@
   .footer-bottom-bar {
     flex-direction: column;
     text-align: center;
+    gap: 10px;
   }
 }
 
-/* Small phones (max-width: 480px) */
-@media screen and (max-width: 480px) {
+/* Small Phones (max-width: 440px) */
+@media screen and (max-width: 440px) {
   .product-main-title {
     font-size: 24px;
   }
@@ -747,4 +817,3 @@
     height: 60px;
   }
 }
-

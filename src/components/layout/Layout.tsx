@@ -1,5 +1,5 @@
 import React from "react";
-import { styled, Container, useTheme } from "@mui/material";
+import { styled, Container } from "@mui/material";
 import { Outlet, useLocation } from "react-router-dom";
 import { Header } from "../header";
 import { Footer } from "../footer";
@@ -20,7 +20,6 @@ const PageWrapper = styled("div")(() => ({
 }));
 
 const Layout = () => {
-  const theme = useTheme();
   const location = useLocation();
   const isProductRoute = location.pathname === "/product" || location.pathname === "/";
 
@@ -29,12 +28,13 @@ const Layout = () => {
       <PageWrapper>
         <Header />
         <Container
+          disableGutters
+          maxWidth={false}
           sx={{
             padding: "0px !important",
-            [theme.breakpoints.up("sm")]: {
-              maxWidth: "100%"
-            },
-            width: "calc(100vw - 6px)"
+            width: "100%",
+            maxWidth: "100% !important",
+            overflowX: "hidden"
           }}
         >
           <Outlet />
