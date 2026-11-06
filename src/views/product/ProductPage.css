@@ -1,6 +1,6 @@
 /* Product Page Stylesheet
    Crafted with pixel-perfect Flexbox, CSS Grid, and responsive Media Queries.
-   Ensures seamless alignment, zero overflow, and fluid scaling across all screens.
+   Guarantees 100% seamless alignment, zero overflow, and fluid scaling on all devices.
 */
 
 :root {
@@ -20,10 +20,10 @@
   --radius-lg: 20px;
 }
 
-/* Base Container - Strict box-sizing & text alignment reset */
+/* Global resets for the product page */
 .product-page-container,
 .product-page-container * {
-  box-sizing: border-box;
+  box-sizing: border-box !important;
 }
 
 .product-page-container {
@@ -33,9 +33,9 @@
   width: 100%;
   max-width: 100%;
   overflow-x: hidden;
-  text-align: left; /* Overrides .App center alignment */
   margin: 0;
   padding: 0;
+  text-align: left;
 }
 
 /* ========================================================
@@ -45,22 +45,10 @@
   width: 100%;
   background: linear-gradient(135deg, #173039 0%, #1a424e 50%, #0c2027 100%);
   color: #ffffff;
-  padding: 50px 24px 60px 24px;
+  padding: 48px 24px 64px 24px;
   position: relative;
   overflow: hidden;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
-  text-align: left;
-}
-
-.product-header-section::after {
-  content: "";
-  position: absolute;
-  top: -40%;
-  right: -5%;
-  width: 480px;
-  height: 480px;
-  background: radial-gradient(circle, rgba(0, 219, 227, 0.16) 0%, rgba(0, 0, 0, 0) 70%);
-  pointer-events: none;
 }
 
 .header-content-wrapper {
@@ -72,7 +60,6 @@
   gap: 14px;
   position: relative;
   z-index: 2;
-  text-align: left;
 }
 
 .product-badge-row {
@@ -80,6 +67,7 @@
   align-items: center;
   gap: 12px;
   flex-wrap: wrap;
+  width: 100%;
 }
 
 .product-category-badge {
@@ -93,7 +81,7 @@
   border-radius: 20px;
   font-size: 13px;
   font-weight: 700;
-  letter-spacing: 1px;
+  letter-spacing: 0.5px;
   text-transform: uppercase;
 }
 
@@ -119,27 +107,24 @@
 }
 
 .product-main-title {
-  font-size: 44px;
+  font-size: clamp(28px, 5vw, 44px);
   font-weight: 800;
   line-height: 1.2;
   margin: 0;
   letter-spacing: -0.5px;
   color: #ffffff;
-  text-align: left;
 }
 
 .product-tagline {
-  font-size: 18px;
+  font-size: clamp(14px, 2.5vw, 17px);
   color: #b0c7cf;
   margin: 0;
   max-width: 720px;
   line-height: 1.55;
-  text-align: left;
 }
 
 /* ========================================================
    2. HERO GRID (Product Image + Description & Specs)
-   Technique: CSS Grid (2 Columns on Desktop)
    ======================================================== */
 .product-hero-wrapper {
   max-width: 1200px;
@@ -160,7 +145,6 @@
   box-shadow: var(--shadow-md);
   padding: 40px;
   width: 100%;
-  text-align: left;
 }
 
 /* Product Media Column */
@@ -248,14 +232,13 @@
   flex-direction: column;
   justify-content: space-between;
   gap: 22px;
-  text-align: left;
+  width: 100%;
 }
 
 .details-header {
   display: flex;
   flex-direction: column;
   gap: 8px;
-  text-align: left;
 }
 
 .rating-row {
@@ -277,12 +260,11 @@
 }
 
 .product-display-name {
-  font-size: 30px;
+  font-size: clamp(22px, 3.5vw, 30px);
   font-weight: 800;
   color: var(--primary-dark);
   margin: 0;
   line-height: 1.25;
-  text-align: left;
 }
 
 .price-row {
@@ -290,16 +272,17 @@
   align-items: baseline;
   gap: 14px;
   margin-top: 4px;
+  flex-wrap: wrap;
 }
 
 .current-price {
-  font-size: 34px;
+  font-size: clamp(26px, 4vw, 34px);
   font-weight: 800;
   color: var(--primary-dark);
 }
 
 .original-price {
-  font-size: 20px;
+  font-size: clamp(16px, 2.5vw, 20px);
   text-decoration: line-through;
   color: #9ab1ba;
   font-weight: 500;
@@ -318,7 +301,6 @@
   padding: 16px 0;
   border-top: 1px solid #ebf2f5;
   border-bottom: 1px solid #ebf2f5;
-  text-align: left;
 }
 
 .description-title {
@@ -328,7 +310,6 @@
   letter-spacing: 1px;
   color: var(--secondary-accent);
   margin-bottom: 8px;
-  text-align: left;
 }
 
 .product-description-text {
@@ -336,7 +317,6 @@
   line-height: 1.65;
   color: var(--text-muted);
   margin: 0;
-  text-align: left;
 }
 
 /* Quick Spec Highlights */
@@ -358,7 +338,6 @@
   font-size: 13px;
   font-weight: 600;
   color: var(--primary-dark);
-  text-align: left;
 }
 
 .spec-icon {
@@ -393,7 +372,6 @@
   align-items: center;
   justify-content: center;
   gap: 10px;
-  text-align: center;
 }
 
 .btn-primary-action:hover {
@@ -416,7 +394,6 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  text-align: center;
 }
 
 .btn-secondary-action:hover {
@@ -426,14 +403,12 @@
 
 /* ========================================================
    4. KEY FEATURES SECTION (At least 3 features)
-   Technique: CSS Grid with fluid responsive layout
    ======================================================== */
 .features-section {
   max-width: 1200px;
   width: 100%;
   margin: 50px auto 60px auto;
   padding: 0 24px;
-  text-align: left;
 }
 
 .section-headline-wrapper {
@@ -451,7 +426,7 @@
 }
 
 .section-main-heading {
-  font-size: 34px;
+  font-size: clamp(24px, 4vw, 34px);
   font-weight: 800;
   color: var(--primary-dark);
   margin: 0;
@@ -459,14 +434,14 @@
 }
 
 .section-subheading {
-  font-size: 16px;
+  font-size: clamp(14px, 2vw, 16px);
   color: var(--text-muted);
   max-width: 620px;
   margin: 10px auto 0 auto;
   line-height: 1.5;
 }
 
-/* Adaptive Features Grid: 4 cols on large, 2 cols on medium, 1 on small */
+/* Fluid Responsive Grid */
 .features-grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
@@ -474,20 +449,22 @@
   width: 100%;
 }
 
+/* Feature Card - Perfectly Centered & Harmonious Alignment */
 .feature-card {
   background: var(--card-bg);
   border: 1px solid var(--card-border);
   border-radius: var(--radius-md);
-  padding: 28px 24px;
+  padding: 32px 24px;
   box-shadow: var(--shadow-sm);
   display: flex;
   flex-direction: column;
-  align-items: flex-start; /* Clean left alignment */
-  text-align: left;
+  align-items: center; /* Center aligned */
+  text-align: center;   /* Center aligned */
   gap: 14px;
   transition: all 0.3s ease;
   position: relative;
   overflow: hidden;
+  width: 100%;
   word-break: break-word;
 }
 
@@ -513,16 +490,16 @@
 }
 
 .feature-icon-wrapper {
-  width: 52px;
-  height: 52px;
-  border-radius: 12px;
-  background: linear-gradient(135deg, rgba(0, 219, 227, 0.15) 0%, rgba(35, 162, 187, 0.25) 100%);
+  width: 58px;
+  height: 58px;
+  border-radius: 14px;
+  background: linear-gradient(135deg, rgba(0, 219, 227, 0.16) 0%, rgba(35, 162, 187, 0.25) 100%);
   color: var(--secondary-accent);
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 26px;
-  flex-shrink: 0;
+  font-size: 28px;
+  margin: 0 auto;
 }
 
 .feature-title {
@@ -531,7 +508,8 @@
   color: var(--primary-dark);
   margin: 0;
   line-height: 1.35;
-  text-align: left;
+  text-align: center;
+  width: 100%;
 }
 
 .feature-description {
@@ -539,12 +517,12 @@
   line-height: 1.6;
   color: var(--text-muted);
   margin: 0;
-  text-align: left;
+  text-align: center;
+  width: 100%;
 }
 
 /* ========================================================
    5. FOOTER SECTION (Clear Contact Information)
-   Technique: Flexbox & CSS Grid
    ======================================================== */
 .product-footer-section {
   width: 100%;
@@ -552,14 +530,12 @@
   color: #ffffff;
   padding: 56px 24px 32px 24px;
   border-top: 3px solid var(--primary-accent);
-  text-align: left;
 }
 
 .footer-inner-container {
   max-width: 1200px;
   width: 100%;
   margin: 0 auto;
-  text-align: left;
 }
 
 .footer-columns-grid {
@@ -569,14 +545,12 @@
   padding-bottom: 40px;
   border-bottom: 1px solid rgba(255, 255, 255, 0.1);
   width: 100%;
-  text-align: left;
 }
 
 .footer-brand-col {
   display: flex;
   flex-direction: column;
   gap: 14px;
-  text-align: left;
 }
 
 .footer-brand-title {
@@ -585,7 +559,6 @@
   color: var(--primary-accent);
   margin: 0;
   letter-spacing: -0.5px;
-  text-align: left;
 }
 
 .footer-brand-desc {
@@ -593,14 +566,12 @@
   color: #9cb1b9;
   line-height: 1.6;
   margin: 0;
-  text-align: left;
 }
 
 .footer-nav-col {
   display: flex;
   flex-direction: column;
   gap: 12px;
-  text-align: left;
 }
 
 .footer-heading {
@@ -610,7 +581,6 @@
   margin: 0 0 4px 0;
   text-transform: uppercase;
   letter-spacing: 1px;
-  text-align: left;
 }
 
 .footer-links-list {
@@ -620,7 +590,6 @@
   display: flex;
   flex-direction: column;
   gap: 10px;
-  text-align: left;
 }
 
 .footer-links-list a {
@@ -638,7 +607,6 @@
   display: flex;
   flex-direction: column;
   gap: 12px;
-  text-align: left;
 }
 
 .contact-info-list {
@@ -648,7 +616,6 @@
   display: flex;
   flex-direction: column;
   gap: 12px;
-  text-align: left;
 }
 
 .contact-info-item {
@@ -657,7 +624,6 @@
   gap: 12px;
   font-size: 14px;
   color: #9cb1b9;
-  text-align: left;
 }
 
 .contact-icon {
@@ -690,7 +656,7 @@
 /* Laptop / Medium Desktops (max-width: 1140px) */
 @media screen and (max-width: 1140px) {
   .features-grid {
-    grid-template-columns: repeat(2, 1fr); /* 2 columns gives plenty of space per card */
+    grid-template-columns: repeat(2, 1fr);
     gap: 24px;
   }
 
@@ -701,12 +667,8 @@
 
 /* Tablets / Small Laptops (max-width: 960px) */
 @media screen and (max-width: 960px) {
-  .product-main-title {
-    font-size: 36px;
-  }
-
   .product-hero-grid {
-    grid-template-columns: 1fr; /* Single column stack */
+    grid-template-columns: 1fr;
     gap: 32px;
     padding: 30px;
   }
@@ -733,15 +695,13 @@
 /* Mobile Devices (max-width: 680px) */
 @media screen and (max-width: 680px) {
   .product-header-section {
-    padding: 36px 18px 48px 18px;
+    padding: 32px 16px 44px 16px;
   }
 
-  .product-main-title {
-    font-size: 28px;
-  }
-
-  .product-tagline {
-    font-size: 15px;
+  .product-badge-row {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
   }
 
   .product-hero-wrapper {
@@ -750,19 +710,11 @@
   }
 
   .product-hero-grid {
-    padding: 20px;
+    padding: 20px 16px;
   }
 
   .product-image-container {
     height: 270px;
-  }
-
-  .product-display-name {
-    font-size: 24px;
-  }
-
-  .current-price {
-    font-size: 28px;
   }
 
   .spec-highlights-list {
@@ -774,7 +726,7 @@
   }
 
   .features-section {
-    margin: 40px auto;
+    margin: 36px auto;
     padding: 0 16px;
   }
 
@@ -783,8 +735,8 @@
     gap: 16px;
   }
 
-  .section-main-heading {
-    font-size: 26px;
+  .feature-card {
+    padding: 24px 16px;
   }
 
   .footer-columns-grid {
@@ -805,8 +757,16 @@
 
 /* Small Phones (max-width: 440px) */
 @media screen and (max-width: 440px) {
-  .product-main-title {
-    font-size: 24px;
+  .product-header-section {
+    padding: 28px 12px 36px 12px;
+  }
+
+  .product-hero-wrapper {
+    padding: 0 12px;
+  }
+
+  .product-hero-grid {
+    padding: 16px 12px;
   }
 
   .product-image-container {
@@ -815,5 +775,9 @@
 
   .thumbnail-btn {
     height: 60px;
+  }
+
+  .features-section {
+    padding: 0 12px;
   }
 }
