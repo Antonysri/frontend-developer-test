@@ -1,6 +1,6 @@
 export const navigations = [
-  { label: "Explore", path: "/explore" },
-  { label: "Offers", path: "/offers" },
-  { label: "History", path: "/history" },
-  { label: "Language", path: "/language" }
+  { label: "Product", path: "/product" },
+  { label: "Dashboard", path: "/dashboard" },
+  { label: "Sell", path: "/sell" },
+  { label: "Explore", path: "/explore" }
 ];

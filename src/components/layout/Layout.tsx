@@ -1,6 +1,6 @@
-import React, { useState } from "react";
+import React from "react";
 import { styled, Container, useTheme } from "@mui/material";
-import { Outlet } from "react-router-dom";
+import { Outlet, useLocation } from "react-router-dom";
 import { Header } from "../header";
 import { Footer } from "../footer";
 import Notifications from "../Notifications";
@@ -21,6 +21,9 @@ const PageWrapper = styled("div")(() => ({
 
 const Layout = () => {
   const theme = useTheme();
+  const location = useLocation();
+  const isProductRoute = location.pathname === "/product" || location.pathname === "/";
+
   return (
     <MainWrapper>
       <PageWrapper>
@@ -37,7 +40,7 @@ const Layout = () => {
           <Outlet />
           {Notifications()}
         </Container>
-        <Footer />
+        {!isProductRoute && <Footer />}
       </PageWrapper>
     </MainWrapper>
   );

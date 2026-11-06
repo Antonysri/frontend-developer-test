@@ -3,6 +3,7 @@ import { Navigate } from "react-router-dom";
 import Loadable from "../components/loadable/Loadable";
 
 const Layout = Loadable(lazy(() => import("../components/layout/Layout")));
+const ProductPage = Loadable(lazy(() => import("../views/product/ProductPage")));
 const Dashboard = Loadable(lazy(() => import("../views/dashboard/Dashboard")));
 const Sell = Loadable(lazy(() => import("../views/sell/Sell")));
 const Login = Loadable(lazy(() => import("../views/login/Login")));
@@ -15,7 +16,8 @@ const Router = [
     path: "/",
     element: <Layout />,
     children: [
-      { path: "/", element: <Navigate to="/dashboard" /> },
+      { path: "/", element: <Navigate to="/product" /> },
+      { path: "/product", exact: true, element: <ProductPage /> },
       { path: "/dashboard", exact: true, element: <Dashboard /> },
       { path: "/sell", exact: true, element: <Sell /> },
       { path: "/login", exact: true, element: <Login /> },
@@ -26,3 +28,4 @@ const Router = [
 ];
 
 export default Router;
+
